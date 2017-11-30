@@ -1,0 +1,41 @@
+char ZadanyPIN[16];
+bool preruseno = false;
+bool zneskodneno = false;
+
+void ZadejPIN(){
+  lcd.cursor_on();
+    for(int index=0;index<16;index++){
+      lcd.setCursor(index,1);
+      char znak;
+      while(!(znak =customKeypad.getKey()) ){
+	if(znak == '#'){
+		preruseno=true;
+		return;
+	}
+	else      
+		ZadanyPIN[index]= znak;
+      }
+      lcd.print(znak);
+    }
+    lcd.clear();
+    lcd.cursor_off();
+}
+
+void Hra1(){
+	//Zaène odpoèítávání
+	zneskodneno=false;
+	while(!boom || !zneskodneno)
+		preruseno = false;
+		if(customKeypad.getKey() == '#')
+      			ZadejPIN();
+		lcd.setCursor(0,0);
+		//zobrazí zbývající èas
+		if(preruseno == false)
+			if(*PIN2 == *ZadanyPIN){
+				//zastaví odpoèítávání
+				lcd.setCursor(0,1);
+				lcd.print("Zneskodneno");
+				zneskodneno=true;
+			}
+	}
+}
