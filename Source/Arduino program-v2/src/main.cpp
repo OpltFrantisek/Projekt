@@ -180,7 +180,7 @@ void NactiPin(bool rezim,char pin[16]){
   pin = "123456789123456";
 }
 long NactiCas(bool rezim){
-  return 15L;
+  return 15L;;
 }
 void Hra1(){
 
