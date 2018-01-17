@@ -1,0 +1,4 @@
+Bomba.MainActivity, Bomba;md5247953bc360afe6f324d0edce05df69c.MainActivity
+Bomba.MainActivity, Bomba, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null;md5247953bc360afe6f324d0edce05df69c.MainActivity
+Bomba.MainActivity;md5247953bc360afe6f324d0edce05df69c.MainActivity
+bomba.MainActivity;md5247953bc360afe6f324d0edce05df69c.MainActivity
