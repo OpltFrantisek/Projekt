@@ -3,6 +3,12 @@
 #include <LiquidCrystal_PCF8574.h>
 #include "Klavesnice.h"
 #include "EEPROM.h"
+#include <WiFi.h>
+#include <WiFiClient.h>
+#include <WebServer.h>
+#include <ESPmDNS.h>
+WebServer server(80);
+
 
 #define EEPROM_SIZE 64
 #define ADRESA_AKTIVACE 1
@@ -10,6 +16,9 @@
 #define ADRESA_REZIM  0
 #define CAS_VYBUCHU  33
 #define CAS_HRY 37
+
+const char* ssid = "neco";
+const char* password = "neco";
 
 class Bomba{
     public:
@@ -22,6 +31,8 @@ class Bomba{
 bool preruseno = false;
 bool zneskodneno = false;
 
+bool WEBactivation = false;
+bool WEBodpal = false;
 
 char ZadanyPIN[16];
 Bomba b;
@@ -62,6 +73,11 @@ void AlarmInterrupt(){
 void setup() {
   pinMode(interruptPin,INPUT_PULLUP);
   Serial.begin(9600);
+  WiFi.softAP("neco", "123456789");
+  server.on("/act", handleActivation);
+  server.on("/ok", handleOK);
+  server.onNotFound(handleNotFound);
+  server.begin();
   Wire.begin();
   Rtc.Begin();
   Rtc.Enable32kHzPin(false);

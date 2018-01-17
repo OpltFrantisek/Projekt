@@ -26,6 +26,7 @@ void Game(bool stat){
   }
 void ZadejPIN(){
   preruseno = true;
+  lcd.setCursor(0,0);
   lcd.print("Zadej pin:");
   lcd.setCursor(0,1);
   lcd.cursor();
@@ -43,7 +44,7 @@ void ZadejPIN(){
           case '7':
           case '8':
           case '9': ZadanyPIN[index]= znak; Serial.println(int(ZadanyPIN[index]));lcd.print(znak);break;
-          case '#': preruseno=true;return;
+          case 'D': preruseno=true;return;
           default : index--;
         }     
     }
@@ -59,13 +60,66 @@ void ZadejPIN(){
       delay(3000);
       lcd.clear();
       lcd.home();
-      attachInterrupt(interruptPin, AlarmInterrupt, RISING );
-      zneskodneno = false;
+      zneskodneno=true;
       bool spatny_pin = false;
+      while(zneskodneno){
+        server.handleClient();
+        zneskodneno=true;
+        ZadejPIN();
+        for(int i = 0; i < b.delka_pinu;i++){
+                    if(b.aktivace[i] != ZadanyPIN[i]){
+                      lcd.clear();
+                      lcd.home();
+                      lcd.print("Spatny pin");
+                      delay(3000);
+                      lcd.clear();
+                      spatny_pin = true; 
+                    }
+               }
+               if(!spatny_pin){
+                  lcd.setCursor(0,1);
+                  lcd.print("Aktivovano");
+                 zneskodneno=false;
+                
+                  break;
+                } 
+              
+      } 
+      bool zapnuto=false;  
+      unsigned long cas;
+      unsigned long Time; 
+      while(!zapnuto){
+          server.handleClient();
+          lcd.setCursor(0,0);
+          lcd.clear();
+          lcd.print("Aktivace = A");
+          
+          if(k.stiskTl() == 'A' || WEBactivation){
+             cas=millis(); 
+             Time = cas;       
+             while(Time-cas <=10000){
+                server.handleClient();
+                Time = millis();
+                lcd.setCursor(0,0);
+                lcd.clear();
+                lcd.print("Opravdu?");
+                if(k.stiskTl() == 'B' || WEBodpal){
+                  zapnuto = true;
+                  break;
+                }
+             }
+          }
+          WEBactivation = false;
+          WEBodpal = false;
+        }
+      attachInterrupt(interruptPin, AlarmInterrupt, RISING );
+      preruseno = false;
+      spatny_pin = false;
       lcd.setCursor(0,0);
       while(!boom || !zneskodneno){
+          server.handleClient();
           preruseno = false;
-          if(k.stiskTl() == '#'){
+          if(k.stiskTl() == '#'){       
                ZadejPIN();
                spatny_pin = false;
                for(int i = 0; i < b.delka_pinu;i++){

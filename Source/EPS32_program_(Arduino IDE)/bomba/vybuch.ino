@@ -10,7 +10,6 @@ void pocitej(){
    Serial.println(m);
    s = b.casDoVybuchu-(m*60+h*3600);
    Serial.println(s);
-   b.casDoVybuchu--;
    if(b.casDoVybuchu == 0){
      allah_akbar();
    }
@@ -25,4 +24,5 @@ void pocitej(){
       }
 
    }
+   b.casDoVybuchu--;
 }
