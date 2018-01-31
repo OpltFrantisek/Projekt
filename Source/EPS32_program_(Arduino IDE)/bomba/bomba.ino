@@ -15,7 +15,7 @@ WebServer server(80);
 #define ADRESA_DEAKTIVACE 17
 #define ADRESA_REZIM  0
 #define CAS_VYBUCHU  33
-#define CAS_HRY 37
+#define CAS_HRY 40
 
 const char* ssid = "neco";
 const char* password = "neco";
@@ -23,6 +23,7 @@ const char* password = "neco";
 class Bomba{
     public:
       long casDoVybuchu = 30;
+      long casHry = 300;  
       char *aktivace;
       char *deaktivace;
       int delka_pinu = 16;
@@ -48,9 +49,10 @@ int h;
 int m;
 int s;
 //int t = 4563;
-
+bool restart = false;
 bool boom = false;
-
+char rezim;
+bool zapnuto = false;
 void Game(bool nacteno);
 int NastavCas(char zprava[]);
 void NastavPin(bool neco, char kod[16]);
@@ -76,6 +78,9 @@ void setup() {
   WiFi.softAP("neco", "123456789");
   server.on("/act", handleActivation);
   server.on("/ok", handleOK);
+  server.on("/st", handleStatus);
+  server.on("/time", handleTime);
+  server.on("/restart", handleRestart);
   server.onNotFound(handleNotFound);
   server.begin();
   Wire.begin();
@@ -99,6 +104,13 @@ void setup() {
 }
 
 void loop() {
+ server.handleClient();
+ if(restart == true){
+    lcd.print("Restart");
+    restart = false;
+    Game(false);
+  }
+
  
 }
 

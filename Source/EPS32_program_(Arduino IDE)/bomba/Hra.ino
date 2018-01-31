@@ -1,14 +1,18 @@
 void Game(bool stat){
   lcd.print("game");
-   char rezim;
+   
    rezim = ctiChar(ADRESA_REZIM);
-   b.casDoVybuchu = ctiLong(CAS_VYBUCHU);
+  // b.casDoVybuchu = ctiLong(CAS_VYBUCHU);
    b.aktivace = new char[16];
    b.deaktivace = new char[16];
    b.aktivace = ctiCharArray(ADRESA_AKTIVACE,16,b.aktivace);
    b.deaktivace = ctiCharArray(ADRESA_DEAKTIVACE,16,b.deaktivace);
-   
-   b.casDoVybuchu = 30;
+
+   int h = (ctiChar(CAS_VYBUCHU)-48)*10+(ctiChar(CAS_VYBUCHU+1)-48);
+   int m = (ctiChar(CAS_VYBUCHU+2)-48)*10+(ctiChar(CAS_VYBUCHU+3)-48);
+   int s = (ctiChar(CAS_VYBUCHU+4)-48)*10+(ctiChar(CAS_VYBUCHU+5)-48);
+   b.casDoVybuchu = h*3600L+m*60L+s;
+   //b.casDoVybuchu = 30;
    for(int i = 0; i < 16;i++){
       Serial.print("aktivace => ");
       Serial.println(b.aktivace[i]);
@@ -31,6 +35,7 @@ void ZadejPIN(){
   lcd.setCursor(0,1);
   lcd.cursor();
     for(int index=0;index<16;index++){
+        server.handleClient();    
        lcd.setCursor(index,1);
        char znak;     
        znak =k.stiskTl();
@@ -85,7 +90,7 @@ void ZadejPIN(){
                 } 
               
       } 
-      bool zapnuto=false;  
+      zapnuto=false;  
       unsigned long cas;
       unsigned long Time; 
       while(!zapnuto){
@@ -119,6 +124,8 @@ void ZadejPIN(){
       while(!boom || !zneskodneno){
           server.handleClient();
           preruseno = false;
+          if(boom)
+            return;
           if(k.stiskTl() == '#'){       
                ZadejPIN();
                spatny_pin = false;
@@ -142,4 +149,5 @@ void ZadejPIN(){
             preruseno = false;
             }     
         }
+        lcd.print("Konec");
 }

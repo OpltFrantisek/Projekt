@@ -1,6 +1,6 @@
 int NastavCas(char zprava[]){
   int index=0;
-  int cisla[8] = {0,0,-1,0,0,-1,0,0};
+  char cisla[8] = {0,0,-1,0,0,-1,0,0};
   lcd.setCursor(index, 0);
    lcd.print(zprava); // vypĂ­Ĺˇe text
    lcd.setCursor(index, 1);
@@ -21,28 +21,37 @@ int NastavCas(char zprava[]){
                         lcd.setCursor(index, 1);
                       }
                   break;
-      case '0': if(index != 2 && index != 5){cisla[index] = 0;lcd.print(0);}index++;lcd.setCursor(index,1);break;
-      case '1': if(index != 2 && index != 5){cisla[index] = 1;lcd.print(1);}index++;lcd.setCursor(index,1);break;
-      case '2': if(index != 2 && index != 5){cisla[index] = 2;lcd.print(2);}index++;lcd.setCursor(index,1);break;
-      case '3': if(index != 2 && index != 5){cisla[index] = 3;lcd.print(3);}index++;lcd.setCursor(index,1);break;
-      case '4': if(index != 2 && index != 5){cisla[index] = 4;lcd.print(4);}index++;lcd.setCursor(index,1);break;
-      case '5': if(index != 2 && index != 5){cisla[index] = 5;lcd.print(5);}index++;lcd.setCursor(index,1);break;
-      case '6': if(index != 2 && index != 5){cisla[index] = 6;lcd.print(6);}index++;lcd.setCursor(index,1);break;
-      case '7': if(index != 2 && index != 5){cisla[index] = 7;lcd.print(7);}index++;lcd.setCursor(index,1);break;
-      case '8': if(index != 2 && index != 5){cisla[index] = 8;lcd.print(8);}index++;lcd.setCursor(index,1);break;
-      case '9': if(index != 2 && index != 5){cisla[index] = 9;lcd.print(9);}index++;lcd.setCursor(index,1);break;
+      case '0': if(index != 2 && index != 5){cisla[index] = '0';lcd.print(0);}index++;lcd.setCursor(index,1);break;
+      case '1': if(index != 2 && index != 5){cisla[index] = '1';lcd.print(1);}index++;lcd.setCursor(index,1);break;
+      case '2': if(index != 2 && index != 5){cisla[index] = '2';lcd.print(2);}index++;lcd.setCursor(index,1);break;
+      case '3': if(index != 2 && index != 5){cisla[index] = '3';lcd.print(3);}index++;lcd.setCursor(index,1);break;
+      case '4': if(index != 2 && index != 5){cisla[index] = '4';lcd.print(4);}index++;lcd.setCursor(index,1);break;
+      case '5': if(index != 2 && index != 5){cisla[index] = '5';lcd.print(5);}index++;lcd.setCursor(index,1);break;
+      case '6': if(index != 2 && index != 5){cisla[index] = '6';lcd.print(6);}index++;lcd.setCursor(index,1);break;
+      case '7': if(index != 2 && index != 5){cisla[index] = '7';lcd.print(7);}index++;lcd.setCursor(index,1);break;
+      case '8': if(index != 2 && index != 5){cisla[index] = '8';lcd.print(8);}index++;lcd.setCursor(index,1);break;
+      case '9': if(index != 2 && index != 5){cisla[index] = '9';lcd.print(9);}index++;lcd.setCursor(index,1);break;
       }
-      if (customKey =='D')
+      if (customKey =='D' || index > 10)
         break;
 
     }
-    int h = cisla[0]*10+cisla[1];
-    int m = cisla[3]*10+cisla[4];
-    int s = cisla[6]*10+cisla[7];
-    int cas = h*3600+m*60+s;
+    //int h = cisla[0]*10+cisla[1];
+   // int m = cisla[3]*10+cisla[4];
+   // int s = cisla[6]*10+cisla[7];
+    //int cas = h*3600+m*60+s;
+    zapisChar(CAS_VYBUCHU,cisla[0]);
+    zapisChar(CAS_VYBUCHU+1,cisla[1]);
+
+    zapisChar(CAS_VYBUCHU+2,cisla[3]);
+    zapisChar(CAS_VYBUCHU+3,cisla[4]);
+    
+    zapisChar(CAS_VYBUCHU+4,cisla[6]);
+    zapisChar(CAS_VYBUCHU+5,cisla[7]);  
+       
     lcd.clear();
     lcd.noCursor();
-    return cas;
+    return 5;
 }
 void NastavPin(bool neco){
     lcd.cursor();
@@ -113,8 +122,9 @@ char ZadejHerniRezim(){
   ZadejHerniRezim_Pom();
   lcd.print("Search & Destroy");
   while(true){
-      char customKey = k.stiskTl();
+      char customKey = k.stiskTl();     
       if(customKey == '#'){
+        
         ZadejHerniRezim_Pom();
         rezim++;
         if(rezim == 4)
@@ -126,7 +136,7 @@ char ZadejHerniRezim(){
         if(rezim == 0)
           rezim = 3;
       }
-      if(customKey == 'D'){
+      if(customKey == '0'){
           lcd.clear();
           return rezim;
       }
