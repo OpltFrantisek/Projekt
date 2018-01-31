@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App4.Views.ItemsPage"
+              Title="{Binding Title}"
+             x:Name="BrowseItemsPage">
+
+    <ContentPage.Content>
+        <StackLayout >
+            <Label x:Name="labelCas" Text="00:00:00" HorizontalOptions="Center" VerticalOptions="Center" HeightRequest="40" FontSize="Large"/>
+            <Button x:Name="btnAktivace" Text="Aktivace" Clicked="btnAktivace_Clicked"/>
+            <Button x:Name="btnOK" Text="OK" IsVisible="False" Clicked="btnAktivace_Clicked"/>
+            <Button x:Name="btnRestart" Text="Restart" Clicked="btnRestart_Clicked"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
