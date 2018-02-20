@@ -15,3 +15,5 @@
  1) nainstalovat visual studio 2017 (stačí community verze) při výběru komponent zaškrtnout Xamarin 
  2) Na mobilu zapnout vývojářský režim
  3) Připojit mobil k pc a nahrát program 
+ 
+ [todo]
