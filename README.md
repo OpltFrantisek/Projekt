@@ -10,5 +10,5 @@ Nahrání kódu do ESP32
  4) Otevřít soubor Bomba.ino
  6) Kliknout na upload :floppy_disk:
  
- Mobilní aplikace
- I když je aplikace psaná jako multiplatformí tak je zatím funkční pouze pro telefony se systémem android. Verze pro android vyžaduje API 26 (android 7 a vyšší)  
+ Mobilní aplikace :iphone:
+ I když je aplikace psána jako multiplatformí tak je zatím funkční pouze pro telefony se systémem android. Verze pro android vyžaduje API 26 (android 7 a vyšší)  
