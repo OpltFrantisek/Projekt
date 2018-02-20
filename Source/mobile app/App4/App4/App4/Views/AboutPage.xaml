@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App4.Views.AboutPage"
+             xmlns:vm="clr-namespace:App4.ViewModels;"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <Label Text="   Ip adresa:" Grid.Row="0" Grid.Column="0" VerticalOptions="Center"/>
+            <Entry x:Name="entryIP" Text="192.168.4.1" Grid.Row="0" Grid.Column="1" IsEnabled="False"/>
+            <Button x:Name="btnTest" Text="Test" Grid.Row="0" Grid.Column="2" Clicked="btnTest_Clicked" />
+            
+            <Label Text="   Herni režim:" Grid.Row="1" Grid.Column="0" VerticalOptions="Center"/>
+            <Label Text="   Čas výbuchu" Grid.Row="2" Grid.Column="0" VerticalOptions="Center"/>
+            <Label Text="   Čas hry" Grid.Row="3" Grid.Column="0" VerticalOptions="Center"/>
+            <Label Text="   Pin1" Grid.Row="4" Grid.Column="0" VerticalOptions="Center"/>
+            <Label Text="   Pin2" Grid.Row="5" Grid.Column="0" VerticalOptions="Center"/>
+
+            <Entry x:Name="entryMode" Text="mode1" Grid.Row="1" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
+            <Entry x:Name="entryCasV" Text="00:00:30" Grid.Row="2" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
+            <Entry x:Name="entryCasH" Text="00:30:00" Grid.Row="3" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
+            <Entry x:Name="entryPin1" Text="xxxxxxxxxxxxxxxx" Grid.Row="4" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
+            <Entry x:Name="entryPin2" Text="xxxxxxxxxxxxxxxx" Grid.Row="5" Grid.Column="1" VerticalOptions="Center" IsEnabled="False"/>
+
+            <Button x:Uid="0" x:Name="btnEnableMode"  Clicked="btnEnableMode_Clicked" Text="edit" Grid.Row="1" Grid.Column="2" VerticalOptions="Center" IsEnabled="False"/>
+            <Button x:Uid="2" x:Name="btnEnableCasV" Clicked="btnEnableMode_Clicked"  Text="edit" Grid.Row="2" Grid.Column="2" VerticalOptions="Center" IsEnabled="False"/>
+            <Button x:Uid="3"  x:Name="btnEnableCasH" Clicked="btnEnableMode_Clicked" Text="edit" Grid.Row="3" Grid.Column="2" VerticalOptions="Center" IsEnabled="False"/>
+            <Button x:Uid="4" x:Name="btnEnablePin1" Clicked="btnEnableMode_Clicked" Text="edit" Grid.Row="4" Grid.Column="2" VerticalOptions="Center" IsEnabled="False"/>
+            <Button x:Uid="5" x:Name="btnEnablePin2" Clicked="btnEnableMode_Clicked" Text="edit" Grid.Row="5" Grid.Column="2" VerticalOptions="Center" IsEnabled="False"/>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
