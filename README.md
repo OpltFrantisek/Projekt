@@ -16,4 +16,4 @@
  2) Na mobilu zapnout vývojářský režim
  3) Připojit mobil k pc a nahrát program 
  
- [todo]
+ [x todo](https://github.com/OpltFrantisek/Projekt/blob/master/todo_list.md)
