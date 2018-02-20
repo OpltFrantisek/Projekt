@@ -9,3 +9,6 @@ Nahrání kódu do ESP32
  3) V arduino ide zvolit jako desku ESP32 Dev kit
  4) Otevřít soubor Bomba.ino
  6) Kliknout na upload :floppy_disk:
+ 
+ Mobilní aplikace
+ I když je aplikace psaná jako multiplatformí tak je zatím funkční pouze pro telefony se systémem android. Verze pro android vyžaduje API 26 (android 7 a vyšší)  
