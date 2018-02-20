@@ -1,7 +1,7 @@
 # Bomba pro Airsoft :bomb:
 
 1) [Bomba](https://github.com/OpltFrantisek/Projekt/blob/master/Bomba.md)  
-2) Mobilní aplikace    
+2) [Mobilní aplikace](https://github.com/OpltFrantisek/Projekt/wiki/Mobilní-aplikace)    
 
 ## Nahrání kódu do ESP32
  1) Stáhnout a nainstalovat Arduino IDE ze stránek [arduino.cc](https://www.arduino.cc/en/Main/Software)
