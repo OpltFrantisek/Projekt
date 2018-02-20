@@ -1,6 +1,6 @@
 # Bomba pro Airsoft :bomb:
 
-1) [Bomba](https://github.com/OpltFrantisek/Projekt/blob/master/Bomba.md)  
+1) [Bomba](https://github.com/OpltFrantisek/Projekt/wiki/Bomba)  
 2) [Mobilní aplikace](https://github.com/OpltFrantisek/Projekt/wiki/Mobilní-aplikace)    
 
 ## Nahrání kódu do ESP32
