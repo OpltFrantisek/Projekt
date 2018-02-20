@@ -12,4 +12,6 @@
  
 ## Mobilní aplikace :iphone:   
  I když je aplikace psána jako multiplatformí tak je zatím funkční pouze pro telefony se systémem android. Verze pro android vyžaduje API 26 (android 7 a vyšší)
- 1) nainstalovat visual studio 2017 (stačí community verze) při výběro komponent zaškrtnout Xamarin
+ 1) nainstalovat visual studio 2017 (stačí community verze) při výběru komponent zaškrtnout Xamarin 
+ 2) Na mobilu zapnout vývojářský režim
+ 3) Připojit mobil k pc a nahrát program 
